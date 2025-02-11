@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BookWormsOnline</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BookWormsOnline.styles.css" asp-append-version="true" />
+
+    <style>
+        /* Navbar Styling */
+        .custom-navbar {
+            background-color: #06402b;
+            /* Dark Green */
+            padding: 15px;
+        }
+
+        .custom-navbar .navbar-brand {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 22px;
+            text-transform: uppercase;
+        }
+
+        .custom-navbar .navbar-nav .nav-link {
+            color: #ffffff;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .custom-navbar .navbar-nav .nav-link:hover {
+            color: #ffffff;
+        }
+
+        .custom-navbar .nav-btn {
+            background-color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            font-size: 16px;
+            border-radius: 5px;
+            color: #000000;
+            transition: background-color 0.3s;
+        }
+
+        .custom-navbar .nav-btn:hover {
+            background-color: #f1c40f;
+            /* Light Orange Accent */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg custom-navbar">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">📚 BookWorms</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            
+                        </li>
+                    </ul>
+
+                    <div class="d-flex">
+                        @if (Context.Session.GetString("UserId") != null)
+                        {
+                            <form method="post" asp-page="/Logout">
+                                <button type="submit" class="btn nav-btn">Logout</button>
+                            </form>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted text-center">
+        <div class="container">
+            &copy; 2025 - BookWormsOnline
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+@page
+@model BookWormsOnline.Pages.ErrorModel
+@{
+    ViewData["Title"] = "Server Error";
+}
+
+<div class="error-container">
+    <h1>500 - Internal Server Error</h1>
+    <p>Something went wrong on our side. Please try again later.</p>
+    <a asp-page="/Index" class="btn btn-primary">Return Home</a>
+</div>

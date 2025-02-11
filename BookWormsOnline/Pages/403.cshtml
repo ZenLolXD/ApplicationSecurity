@@ -1,0 +1,11 @@
+@page
+@model BookWormsOnline.Pages.ErrorModel
+@{
+    ViewData["Title"] = "Access Denied";
+}
+
+<div class="error-container">
+    <h1>403 - Forbidden</h1>
+    <p>You do not have permission to access this page.</p>
+    <a asp-page="/Index" class="btn btn-primary">Return Home</a>
+</div>

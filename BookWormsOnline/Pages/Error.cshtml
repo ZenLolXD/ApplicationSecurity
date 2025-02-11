@@ -1,0 +1,25 @@
+﻿@page
+@model BookWormsOnline.Pages.ErrorModel
+@{
+    ViewData["Title"] = $"Error {Model.StatusCode}";
+}
+
+<div class="error-container">
+    <h1>Error @Model.StatusCode</h1>
+    <p>@Model.Message</p>
+    <a asp-page="/Index" class="btn btn-primary">Return Home</a>
+</div>
+
+<style>
+    .error-container {
+        text-align: center;
+        margin-top: 50px;
+    }
+    .btn-primary {
+        background-color: #06402b;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+</style>
