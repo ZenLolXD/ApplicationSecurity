@@ -4,30 +4,24 @@
     ViewData["Title"] = "Register";
 }
 
-<!-- Custom CSS for a modern UI inspired by nlb.gov.sg -->
+<!-- Custom CSS for a modern UI -->
 <style>
-    /* Base styles */
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background-color: #ffffff;
     }
-
     .error-message {
         font-size: 12px;
         color: red;
         margin-top: 3px;
         display: block;
     }
-
-    /* Centering the card vertically and horizontally */
     .modern-container {
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 20px;
     }
-
-    /* Card styling */
     .modern-card {
         background: #fff;
         border: none;
@@ -37,36 +31,26 @@
         max-width: 600px;
         overflow: hidden;
     }
-
-    /* Header using your chosen color */
     .modern-card-header {
         background-color: #06402b;
         padding: 20px;
         text-align: center;
     }
-
     .modern-card-header h3 {
         margin: 0;
         color: #fff;
         font-weight: 500;
     }
-
-    /* Card body spacing */
     .modern-card-body {
         padding: 30px;
     }
-
-    /* Form group spacing and label styling */
     .modern-form-group {
         margin-bottom: 1.5rem;
     }
-
     .modern-form-group label {
         font-weight: 600;
         color: #333;
     }
-
-    /* Input styling with smooth focus effect */
     .modern-form-control {
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -74,13 +58,13 @@
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
         width: 100%;
     }
-
     .modern-form-control:focus {
         border-color: #06402b;
         box-shadow: 0 0 5px rgba(6, 64, 43, 0.4);
     }
-
-    /* Button styling with hover effect */
+    .is-invalid {
+        border-color: red !important;
+    }
     .modern-btn {
         background-color: #06402b;
         border: none;
@@ -90,7 +74,6 @@
         color: #fff;
         transition: background-color 0.3s ease;
     }
-
     .modern-btn:hover {
         background-color: #053d23;
     }
@@ -104,140 +87,132 @@
         <div class="modern-card-body">
             <form id="register-form" method="post" enctype="multipart/form-data">
                 @Html.AntiForgeryToken()
-                <!-- First Name and Last Name Side by Side -->
+                <!-- Display server-side validation messages -->
+                <div asp-validation-summary="All" class="error-message"></div>
+
                 <div class="row">
                     <div class="col-md-6">
                         <div class="modern-form-group">
                             <label>First Name</label>
                             <input type="text" asp-for="Member.FirstName" class="form-control modern-form-control" placeholder="Enter first name" required>
+                            <span asp-validation-for="Member.FirstName" class="error-message"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="modern-form-group">
                             <label>Last Name</label>
                             <input type="text" asp-for="Member.LastName" class="form-control modern-form-control" placeholder="Enter last name" required>
+                            <span asp-validation-for="Member.LastName" class="error-message"></span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Email Address (Full Width) -->
                 <div class="modern-form-group">
                     <label>Email Address</label>
                     <input type="email" asp-for="Member.Email" id="email" class="form-control modern-form-control" placeholder="Enter email" required>
-                    <span class="text-danger" asp-validation-for="Member.Email"></span>
+                    <span asp-validation-for="Member.Email" class="error-message"></span>
                 </div>
 
-                <!-- Password and Confirm Password Side by Side -->
                 <div class="row">
                     <div class="col-md-6">
                         <div class="modern-form-group">
                             <label>Password</label>
                             <input type="password" asp-for="Password" id="password" class="form-control modern-form-control" placeholder="Enter strong password" required>
-                            <span class="error-message" asp-validation-for="Password"></span>
+                            <span asp-validation-for="Password" class="error-message"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="modern-form-group">
                             <label>Confirm Password</label>
                             <input type="password" asp-for="ConfirmPassword" id="confirmPassword" class="form-control modern-form-control" placeholder="Confirm password" required>
-                            <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+                            <span asp-validation-for="ConfirmPassword" class="error-message"></span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Credit Card Number and Mobile No Side by Side -->
                 <div class="row">
                     <div class="col-md-6">
                         <div class="modern-form-group">
                             <label>Credit Card Number</label>
                             <input type="text" asp-for="Member.EncryptedCreditCard" id="creditCard" class="form-control modern-form-control" placeholder="Enter credit card number" required>
+                            <span asp-validation-for="Member.EncryptedCreditCard" class="error-message"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="modern-form-group">
                             <label>Mobile No</label>
                             <input type="tel" asp-for="Member.MobileNo" id="mobile" class="form-control modern-form-control" placeholder="Enter mobile number" required>
+                            <span asp-validation-for="Member.MobileNo" class="error-message"></span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Billing Address and Shipping Address Side by Side -->
                 <div class="row">
                     <div class="col-md-6">
                         <div class="modern-form-group">
                             <label>Billing Address</label>
                             <input type="text" asp-for="Member.BillingAddress" class="form-control modern-form-control" placeholder="Enter billing address" required>
+                            <span asp-validation-for="Member.BillingAddress" class="error-message"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="modern-form-group">
                             <label>Shipping Address</label>
-                            <input type="text" asp-for="Member.ShippingAddress" class="form-control modern-form-control" placeholder="Enter shipping address" required>
+                            <input type="text" asp-for="Member.ShippingAddress" id="shippingAddress" class="form-control modern-form-control" placeholder="Enter shipping address" required>
+                            <span asp-validation-for="Member.ShippingAddress" class="error-message"></span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Profile Picture (Full Width) -->
                 <div class="modern-form-group">
                     <label>Profile Picture (.JPG only)</label>
                     <input type="file" asp-for="Photo" class="form-control modern-form-control" accept=".jpg">
-                    <span class="text-danger" asp-validation-for="Photo"></span>
+                    <span asp-validation-for="Photo" class="error-message"></span>
                 </div>
 
-                <button type="button" id="register-btn" class="btn modern-btn w-100">Register</button>
+                <button type="submit" class="btn modern-btn w-100">Register</button>
             </form>
         </div>
     </div>
 </div>
 
-<script type="text/javascript">
+<script>
     @Html.Raw(@"
-document.getElementById('register-btn').addEventListener('click', function (event) {
-    event.preventDefault();
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('register-form').addEventListener('submit', function (event) {
+        var email = document.getElementById('email').value.trim();
+        var mobile = document.getElementById('mobile').value.trim();
+        var password = document.getElementById('password').value.trim();
+        var confirmPassword = document.getElementById('confirmPassword').value.trim();
+        var creditCard = document.getElementById('creditCard').value.trim();
+        var shippingAddress = document.getElementById('shippingAddress').value.trim();
 
-    var email = document.getElementById('email').value.trim();
-    var mobile = document.getElementById('mobile').value.trim();
-    var password = document.getElementById('password').value.trim();
-    var confirmPassword = document.getElementById('confirmPassword').value.trim();
-    var creditCard = document.getElementById('creditCard').value.trim();
+        var errors = [];
 
-    // ✅ Email Validation
-    var emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-    if (!emailPattern.test(email)) {
-        alert('Invalid email format.');
-        return;
-    }
+        // ✅ Email Validation
+        var emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+        if (!emailPattern.test(email)) errors.push('Invalid email format.');
 
-    // ✅ Phone Number Validation (Only digits, 8-15 characters)
-    var phonePattern = /^\d{8,15}$/;
-    if (!phonePattern.test(mobile)) {
-        alert('Invalid phone number. Only numbers are allowed.');
-        return;
-    }
+        // ✅ Phone Validation
+        var phonePattern = /^\d{8,15}$/;
+        if (!phonePattern.test(mobile)) errors.push('Invalid phone number.');
 
-    // ✅ Password Strength Validation
-    if (password.length < 12 || !/[A-Z]/.test(password) || !/[a-z]/.test(password) ||
-        !/[0-9]/.test(password) || !/[\W_]/.test(password)) {
-        alert('Password must be at least 12 characters and contain uppercase, lowercase, a number, and a special character.');
-        return;
-    }
+        // ✅ Password Matching
+        if (password !== confirmPassword) errors.push('Passwords do not match.');
 
-    // ✅ Ensure Passwords Match
-    if (password !== confirmPassword) {
-        alert('Passwords do not match.');
-        return;
-    }
+        // ✅ Credit Card Validation
+        var creditCardPattern = /^\d{16}$/;
+        if (!creditCardPattern.test(creditCard)) errors.push('Invalid credit card number.');
 
-    // ✅ Credit Card Validation (Only digits, 16 characters)
-    var creditCardPattern = /^\d{16}$/;
-    if (!creditCardPattern.test(creditCard)) {
-        alert('Invalid credit card number. Must be 16 digits.');
-        return;
-    }
+        // ✅ Shipping Address Validation
+        var addressPattern = /^[a-zA-Z0-9\s,.\-()&/#]+$/;
+        if (!addressPattern.test(shippingAddress)) errors.push('Invalid shipping address.');
 
-    // All validations passed—submit the form!
-    document.getElementById('register-form').submit();
+        if (errors.length > 0) {
+            event.preventDefault();
+            alert(errors.join('\n'));
+        }
+    });
 });
 ")
 </script>
-

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookWormsOnline.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250211113830_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250212114922_AddPasswordRecovery2")]
+    partial class AddPasswordRecovery2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,25 +59,47 @@ namespace BookWormsOnline.Migrations
 
                     b.Property<string>("BillingAddress")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("EncryptedCreditCard")
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("FailedLoginAttempts")
+                        .HasColumnType("int");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<DateTime?>("LastPasswordChange")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("LockoutEndTime")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("MobileNo")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .HasColumnType("varchar(16)");
+
+                    b.Property<string>("OldPasswordHash1")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("OldPasswordHash2")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -85,16 +107,23 @@ namespace BookWormsOnline.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("PasswordResetToken")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("PhotoPath")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("ResetTokenExpiry")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("SessionId")
                         .HasColumnType("longtext");
 
                     b.Property<string>("ShippingAddress")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 

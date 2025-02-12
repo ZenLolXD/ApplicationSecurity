@@ -22,11 +22,13 @@ namespace BookWormsOnline.Models
         public string Email { get; set; }
 
         [Required]
-        public string PasswordHash { get; set; } // Hashed before saving
+        public string PasswordHash { get; set; } = string.Empty; // ✅ Ensure it has a default value
 
-        [NotMapped]
-        [Compare("PasswordHash", ErrorMessage = "Passwords do not match.")]
-        public string ConfirmPassword { get; set; } // Not mapped to DB
+        [Required]
+        public string OldPasswordHash1 { get; set; } = string.Empty;
+
+        [Required]
+        public string OldPasswordHash2 { get; set; } = string.Empty;
 
         [Required]
         public string EncryptedCreditCard { get; set; }
@@ -77,5 +79,14 @@ namespace BookWormsOnline.Models
         // 🔥 Track login attempts and lockout time
         public int FailedLoginAttempts { get; set; } = 0; // Default 0
         public DateTime? LockoutEndTime { get; set; } = null; // Nullable (only set if locked out)
+
+        public DateTime? LastPasswordChange { get; set; } = DateTime.UtcNow; // Track password age
+
+        public string? PasswordResetToken { get; set; }
+
+        
+public DateTime? ResetTokenExpiry { get; set; }
+
+        
     }
 }

@@ -245,8 +245,32 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\khorz\\Desktop\\BookWormsOnline\\BookWormsOnline\\wwwroot\\uploads\\0742bf50-f9dc-400e-9d94-3791847f0f9d.jpg",
+      "PackagePath": "staticwebassets\\uploads\\0742bf50-f9dc-400e-9d94-3791847f0f9d.jpg"
+    },
+    {
+      "Id": "C:\\Users\\khorz\\Desktop\\BookWormsOnline\\BookWormsOnline\\wwwroot\\uploads\\15acd053-a831-4ab9-acf3-b8036b1f0142.jpg",
+      "PackagePath": "staticwebassets\\uploads\\15acd053-a831-4ab9-acf3-b8036b1f0142.jpg"
+    },
+    {
+      "Id": "C:\\Users\\khorz\\Desktop\\BookWormsOnline\\BookWormsOnline\\wwwroot\\uploads\\33d74d12-b931-44cd-ac55-561c2cddfa3e.jpg",
+      "PackagePath": "staticwebassets\\uploads\\33d74d12-b931-44cd-ac55-561c2cddfa3e.jpg"
+    },
+    {
+      "Id": "C:\\Users\\khorz\\Desktop\\BookWormsOnline\\BookWormsOnline\\wwwroot\\uploads\\7933e2b1-f4b3-4c26-b164-28b4b71da74f.jpg",
+      "PackagePath": "staticwebassets\\uploads\\7933e2b1-f4b3-4c26-b164-28b4b71da74f.jpg"
+    },
+    {
       "Id": "C:\\Users\\khorz\\Desktop\\BookWormsOnline\\BookWormsOnline\\wwwroot\\uploads\\british shorthair.jpg",
       "PackagePath": "staticwebassets\\uploads\\british shorthair.jpg"
+    },
+    {
+      "Id": "C:\\Users\\khorz\\Desktop\\BookWormsOnline\\BookWormsOnline\\wwwroot\\uploads\\c14f708c-24a7-4c05-bf85-a1bdcd0896a2.jpg",
+      "PackagePath": "staticwebassets\\uploads\\c14f708c-24a7-4c05-bf85-a1bdcd0896a2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\khorz\\Desktop\\BookWormsOnline\\BookWormsOnline\\wwwroot\\uploads\\efe2f791-043e-419e-a657-05c8e4afeca9.jpg",
+      "PackagePath": "staticwebassets\\uploads\\efe2f791-043e-419e-a657-05c8e4afeca9.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BookWormsOnline.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

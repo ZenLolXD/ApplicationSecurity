@@ -122,6 +122,11 @@
                 <span class="text-danger" asp-validation-for="Password"></span>
             </div>
 
+            <p class="forgot-password">
+    <a asp-page="ForgotPassword">Forgot your password?</a>
+</p>
+
+
             <!-- Hidden input to store reCAPTCHA token -->
             <input type="hidden" id="recaptchaToken" name="RecaptchaToken" />
 
@@ -153,12 +158,6 @@ document.getElementById('login-btn').addEventListener('click', function (event) 
         return;
     }
 
-    // Password Validation: at least 12 characters, containing uppercase, lowercase, a number, and a special character.
-    if (password.length < 12 || !/[A-Z]/.test(password) || !/[a-z]/.test(password) ||
-        !/[0-9]/.test(password) || !/[\W_]/.test(password)) {
-        alert('Password must be at least 12 characters and contain uppercase, lowercase, a number, and a special character.');
-        return;
-    }
 
     // Execute reCAPTCHA and submit form on success
     grecaptcha.ready(function () {
